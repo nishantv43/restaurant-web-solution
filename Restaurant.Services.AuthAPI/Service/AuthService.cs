@@ -92,7 +92,7 @@ namespace Restaurant.Services.AuthAPI.Service
             {
                 
             }
-            return "User Encountered";
+            return "User Encountered!";
         }
     }
 }
