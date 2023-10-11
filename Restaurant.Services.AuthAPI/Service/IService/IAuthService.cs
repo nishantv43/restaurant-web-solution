@@ -8,6 +8,5 @@ namespace Restaurant.Services.AuthAPI.Service.IService
         Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto);
         Task<bool> AssignRole(string email, string roleName);
 
-        //fjdshfkdsfk
     }
 }
