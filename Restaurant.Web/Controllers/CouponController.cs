@@ -16,7 +16,7 @@ namespace Restaurant.Web.Controllers
 
         public async Task<IActionResult> CouponIndex()
         {
-            List<CouponDto?> couponList = null;
+            List<CouponDto?> couponList = new();
             var response = await _couponService.GetAllCouponsAsync();
 
             if (response != null && response.IsSuccess)

@@ -6,11 +6,13 @@ using Restaurant.Services.CouponAPI.Models.Dto;
 using Restaurant.Services.CouponAPI.Models;
 using AutoMapper;
 using System.Collections;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Restaurant.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
+    [Authorize]
     public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
