@@ -10,6 +10,7 @@ namespace Restaurant.Services.ProductAPI.Controllers
 {
     [Route("api/product")]
     [ApiController]
+    [Authorize]
     public class ProductAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
@@ -57,7 +58,7 @@ namespace Restaurant.Services.ProductAPI.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Post(ProductDto ProductDto)
         {
             try
@@ -107,7 +108,7 @@ namespace Restaurant.Services.ProductAPI.Controllers
 
 
         [HttpPut]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Put(ProductDto ProductDto)
         {
             try
@@ -154,7 +155,7 @@ namespace Restaurant.Services.ProductAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try
