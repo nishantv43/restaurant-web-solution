@@ -1,6 +1,5 @@
-﻿using System.Net.Mime;
-using System.Security.AccessControl;
-using static Restaurant.Web.Utility.SD;
+﻿using static Restaurant.Web.Utility.SD;
+using ContentType = Restaurant.Web.Utility.SD.ContentType;
 
 namespace Restaurant.Web.Models
 {
@@ -10,7 +9,6 @@ namespace Restaurant.Web.Models
         public string Url { get; set; }
         public object Data { get; set; }
         public string AccessToken { get; set; }
-
-        //public ContentType ContentType { get; set; } = ContentType.Json;
+        public ContentType ContentType { get; set; } = ContentType.Json;
     }
 }
