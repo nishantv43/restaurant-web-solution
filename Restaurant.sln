@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Services.Shoppin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.MessageBus", "Restaurant.MessageBus\Restaurant.MessageBus.csproj", "{9290E1A4-D429-45DB-89F3-85C3A4F65D02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Services.EmailAPI", "Restaurant.Services.EmailAPI\Restaurant.Services.EmailAPI.csproj", "{7F8FC672-5DEE-426C-BE84-78E193C8D1E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{9290E1A4-D429-45DB-89F3-85C3A4F65D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9290E1A4-D429-45DB-89F3-85C3A4F65D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9290E1A4-D429-45DB-89F3-85C3A4F65D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8FC672-5DEE-426C-BE84-78E193C8D1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8FC672-5DEE-426C-BE84-78E193C8D1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8FC672-5DEE-426C-BE84-78E193C8D1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8FC672-5DEE-426C-BE84-78E193C8D1E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{30FF2290-F4BE-40B0-AA92-41A43D52BC9E} = {F2B77758-2A7B-4B98-B503-5D8CC72E76D9}
 		{93EB7E45-4B15-4E0D-81B8-463E368CEF7A} = {F2B77758-2A7B-4B98-B503-5D8CC72E76D9}
 		{9290E1A4-D429-45DB-89F3-85C3A4F65D02} = {E034F5D3-710D-49D3-B5F9-346E50FF90C4}
+		{7F8FC672-5DEE-426C-BE84-78E193C8D1E3} = {F2B77758-2A7B-4B98-B503-5D8CC72E76D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8362401-DEDA-4D5D-B319-B63DE3BFCC2C}
