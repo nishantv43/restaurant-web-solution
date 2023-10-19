@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Restaurant.MessageBus;
 using Restaurant.Services.AuthAPI.Models.Dto;
 using Restaurant.Services.AuthAPI.Service.IService;
 
@@ -14,12 +15,13 @@ namespace Restaurant.Services.AuthAPI.Controllers
         private readonly IAuthService _authService;
         protected ResponseDto _response;
         private readonly IConfiguration _configuration;
+        private readonly IMessageBus _messageBus;
 
-        public AuthAPIController(IAuthService authService, IConfiguration configuration)
+        public AuthAPIController(IAuthService authService, IConfiguration configuration, IMessageBus messageBus)
         {
             _authService = authService;
             _configuration = configuration;
-            //_messageBus = messageBus;
+            _messageBus = messageBus;
             _response = new();
         }
 
@@ -33,6 +35,7 @@ namespace Restaurant.Services.AuthAPI.Controllers
                 _response.Message = errorMessage;
                 return BadRequest(_response);
             }
+            await _messageBus.PublishMessage(model.Email, _configuration.GetValue<string>("TopicAndQueueNames:RegisteredUserQueue"));
             return Ok(_response);
         }
 

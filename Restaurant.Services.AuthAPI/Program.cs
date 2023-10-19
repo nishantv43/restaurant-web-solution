@@ -4,6 +4,7 @@ using Restaurant.Services.AuthAPI.Data;
 using Restaurant.Services.AuthAPI.Models;
 using Restaurant.Services.AuthAPI.Service.IService;
 using Restaurant.Services.AuthAPI.Service;
+using Restaurant.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
