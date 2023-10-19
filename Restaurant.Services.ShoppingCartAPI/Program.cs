@@ -8,6 +8,7 @@ using Restaurant.Services.ShoppingCartAPI;
 using Restaurant.Services.ShoppingCartAPI.Service.IService;
 using Restaurant.Services.ShoppingCartAPI.Service;
 using Restaurant.Services.ShoppingCartAPI.Utility;
+using Restaurant.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<BackendApiAuthenticationHttpClientHandler>();

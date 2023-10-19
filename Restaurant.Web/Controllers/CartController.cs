@@ -85,7 +85,7 @@ namespace Restaurant.Web.Controllers
         private async Task<CartDto> LoadCartDtoBasedOnLoggedInUser()
         {
             var userId = User.Claims.Where(u => u.Type == JwtRegisteredClaimNames.Sub)?.FirstOrDefault()?.Value;
-            ResponseDto? response = await _cartService.GetCartByUserIdAsnyc(userId);
+            ResponseDto? response = await _cartService.GetCartByUserIdAsync(userId);
             if (response != null & response.IsSuccess)
             {
                 CartDto cartDto = JsonConvert.DeserializeObject<CartDto>(Convert.ToString(response.Result));

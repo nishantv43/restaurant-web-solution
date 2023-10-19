@@ -81,7 +81,7 @@ namespace Restaurant.Web.Controllers
             List<CartDetailsDto> cartDetailsDtos = new() { cartDetails };
             cartDto.CartDetails = cartDetailsDtos;
 
-            ResponseDto? response = await _cartService.UpsertCartAsync(cartDto);
+            ResponseDto? response = await _cartService.ModifyCartAsync(cartDto);
 
             if (response != null && response.IsSuccess)
             {

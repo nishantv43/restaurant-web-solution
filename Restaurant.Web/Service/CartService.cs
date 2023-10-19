@@ -32,7 +32,7 @@ namespace Restaurant.Web.Service
             });
         }
 
-        public async Task<ResponseDto?> GetCartByUserIdAsnyc(string userId)
+        public async Task<ResponseDto?> GetCartByUserIdAsync(string userId)
         {
             return await _baseService.SendAsync(new RequestDto()
             {
@@ -53,7 +53,7 @@ namespace Restaurant.Web.Service
         }
 
 
-        public async Task<ResponseDto?> UpsertCartAsync(CartDto cartDto)
+        public async Task<ResponseDto?> ModifyCartAsync(CartDto cartDto)
         {
             return await _baseService.SendAsync(new RequestDto()
             {
