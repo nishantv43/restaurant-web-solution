@@ -11,7 +11,7 @@ using Restaurant.Services.OrderAPI.Utility;
 
 namespace Restaurant.Services.OrderAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/order")]
     [ApiController]
     public class OrderAPIController : ControllerBase
     {
