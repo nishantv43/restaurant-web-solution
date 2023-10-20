@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Services.RewardsAPI.Data;
+using Restaurant.Services.RewardsAPI.Extension;
+using Restaurant.Services.RewardsAPI.Messaging;
+using Restaurant.Services.RewardsAPI.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,12 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+var optionBuilder = new DbContextOptionsBuilder<AppDbContext>();
+optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddSingleton(new RewardsService(optionBuilder.Options));
+
+builder.Services.AddSingleton<IAzureServiceBusConsumer, AzureServiceBusConsumer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -30,6 +39,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 ApplyMigration();
+
+app.UseAzureServiceBusConsumer();
 
 app.Run();
 void ApplyMigration()

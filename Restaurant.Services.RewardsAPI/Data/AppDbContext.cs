@@ -9,7 +9,7 @@ namespace Restaurant.Services.RewardsAPI.Data
         {
         }
 
-        public DbSet<Rewards> Orders { get; set; }
+        public DbSet<Rewards> Rewards { get; set; }
 
     }
 }
