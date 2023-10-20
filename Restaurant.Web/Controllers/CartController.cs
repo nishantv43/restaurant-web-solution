@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Restaurant.Web.Models;
 using Restaurant.Web.Service.IService;
 using Restaurant.Web.Service;
+using Restaurant.Web.Utility;
 
 namespace Restaurant.Web.Controllers
 {
@@ -69,16 +70,16 @@ namespace Restaurant.Web.Controllers
 
         public async Task<IActionResult> Confirmation(int orderId)
         {
-            //ResponseDto? response = await _orderService.ValidateStripeSession(orderId);
-            //if (response != null & response.IsSuccess)
-            //{
+            ResponseDto? response = await _orderService.ValidateStripeSession(orderId);
+            if (response != null & response.IsSuccess)
+            {
 
-            //    OrderHeaderDto orderHeader = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
-            //    if (orderHeader.Status == SD.Status_Approved)
-            //    {
-            //        return View(orderId);
-            //    }
-            //}
+                OrderHeaderDto orderHeader = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
+                if (orderHeader.Status == SD.Status_Approved)
+                {
+                    return View(orderId);
+                }
+            }
             //redirect to some error page based on status
             return View(orderId);
         }
