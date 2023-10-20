@@ -9,6 +9,8 @@ using Restaurant.MessageBus;
 using Restaurant.Services.OrderAPI.Service.IService;
 using Restaurant.Services.OrderAPI;
 using Restaurant.Services.OrderAPI.Service;
+using Stripe;
+using ProductService = Restaurant.Services.OrderAPI.Service.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +76,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseHttpsRedirection();
 

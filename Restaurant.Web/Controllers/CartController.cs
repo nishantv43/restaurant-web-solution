@@ -47,8 +47,40 @@ namespace Restaurant.Web.Controllers
             {
                 //get stripe session and redirect to stripe to place order
                 //
+                var domain = Request.Scheme + "://" + Request.Host.Value + "/";
+
+                StripeRequestDto stripeRequestDto = new()
+                {
+                    ApprovedUrl = domain + "cart/Confirmation?orderId=" + orderHeaderDto.OrderHeaderId,
+                    CancelUrl = domain + "cart/checkout",
+                    OrderHeader = orderHeaderDto
+                };
+
+                var stripeResponse = await _orderService.CreateStripeSession(stripeRequestDto);
+                StripeRequestDto stripeResponseResult = JsonConvert.DeserializeObject<StripeRequestDto>(Convert.ToString(stripeResponse.Result));
+                
+                Response.Headers.Add("Location", stripeResponseResult.StripeSessionUrl);
+
+                return new StatusCodeResult(303);
+
             }
-            return View();
+            return View(cartDto);
+        }
+
+        public async Task<IActionResult> Confirmation(int orderId)
+        {
+            //ResponseDto? response = await _orderService.ValidateStripeSession(orderId);
+            //if (response != null & response.IsSuccess)
+            //{
+
+            //    OrderHeaderDto orderHeader = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
+            //    if (orderHeader.Status == SD.Status_Approved)
+            //    {
+            //        return View(orderId);
+            //    }
+            //}
+            //redirect to some error page based on status
+            return View(orderId);
         }
 
         public async Task<IActionResult> Remove(int cartDetailsId)
