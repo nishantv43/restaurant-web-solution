@@ -1,4 +1,5 @@
-﻿using Restaurant.Services.EmailAPI.Models.Dto;
+﻿using Restaurant.Services.EmailAPI.Message;
+using Restaurant.Services.EmailAPI.Models.Dto;
 
 namespace Restaurant.Services.EmailAPI.Service
 {
@@ -6,5 +7,6 @@ namespace Restaurant.Services.EmailAPI.Service
     {
         Task EmailCartAndLog(CartDto cartDto);
         Task RegisterUserEmailAndLog(string email);
+        Task LogOrderPlaced(RewardsMessage rewardsDto);
     }
 }

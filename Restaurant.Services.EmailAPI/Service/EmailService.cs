@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.Services.EmailAPI.Data;
+using Restaurant.Services.EmailAPI.Message;
 using Restaurant.Services.EmailAPI.Models;
 using Restaurant.Services.EmailAPI.Models.Dto;
 using System.Text;
@@ -32,6 +33,12 @@ namespace Restaurant.Services.EmailAPI.Service
             message.Append("</ul>");
 
             await LogAndEmail(message.ToString(), cartDto.CartHeader.Email);
+        }
+
+        public async Task LogOrderPlaced(RewardsMessage rewardsDto)
+        {
+            string message = "New Order Placed. <br/> Order ID : " + rewardsDto.OrderId;
+            await LogAndEmail(message, "sampleUser@gmail.com");
         }
 
         public async Task RegisterUserEmailAndLog(string email)
