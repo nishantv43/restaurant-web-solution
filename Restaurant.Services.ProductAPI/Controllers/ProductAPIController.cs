@@ -73,7 +73,6 @@ namespace Restaurant.Services.ProductAPI.Controllers
                     string fileName = product.ProductId + Path.GetExtension(ProductDto.Image.FileName);
                     string filePath = @"wwwroot\ProductImages\" + fileName;
 
-                    //I have added the if condition to remove the any image with same name if that exist in the folder by any change
                     var directoryLocation = Path.Combine(Directory.GetCurrentDirectory(), filePath);
                     FileInfo file = new FileInfo(directoryLocation);
                     if (file.Exists)
