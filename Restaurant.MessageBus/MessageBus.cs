@@ -10,7 +10,7 @@ namespace Restaurant.MessageBus
 {
     public class MessageBus : IMessageBus
     {
-        private string connectionString = "Endpoint=sb://restaurant-web.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XOmbyaJNk88c3SFrF2Obm4x+gkk8kD/5C+ASbEI9/vk=";
+        private string connectionString = "xxxx";
         public async Task PublishMessage(object message, string topic_queue_Name)
         {
             await using var client = new ServiceBusClient(connectionString);
